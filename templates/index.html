@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block bodyy%}
+{% load static %}
+<div class='container'>
+
+      
+            
+               <h1 class="text-warning mt-3">
+                  If you are getting bored ,you are in right place, by this appication we provide many things like... 
+               </h1><br>
+               <div class="p-3 mb-2 rounded">
+                     <h1>
+                        <i class="fas fa-cog fa-spin"></i> Amazing Game...Like <i class='fas fa-gamepad' style='font-size:48px;color:red'></i>
+                     </h1>
+                     <br><br>
+                     <div class="card-deck row-cols-1 row-cols-md-2 ">
+                        <div class="card">
+                          <img src="{% static 'tick.png' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Tic Tac Toe</h5>
+                           </div>
+                        </div>
+                        <div class="card">
+                          <img src="{% static 'rock.png' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Rock Paper Scissors</h5>
+                           </div>
+                        </div>
+                        <div class="card">
+                          <img src="{% static 'color.jpg' %}" class="card-img-top h" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Finding Color</h5>
+                          </div>
+                        </div>
+                      </div>
+               </div>
+
+
+               <div class="p-3 mb-2 rounded">
+                  <h1>
+                     <i class="fas fa-cog fa-spin"></i>Diary, Secret Notes and Voting System <i class='far fa-address-book' style='font-size:48px;color:red'></i>
+                  </h1>
+                  <div class="card-deck row-cols-1 row-cols-md-2 mt-5">
+                     <div class="card">
+                       <img src="{% static 'diary.jpg' %}" class="card-img-top" alt="...">
+                       <div class="card-body">
+                         <h5 class="card-title">Dear Diary</h5>
+                        </div>
+                     </div>
+                     <div class="card">
+                       <img src="{% static 'note.jpg' %}" class="card-img-top" alt="...">
+                       <div class="card-body">
+                         <h5 class="card-title">Notes</h5>
+                        </div>
+                     </div>
+                     <div class="card">
+                       <img src="{% static 'vote.jpg' %}" class="card-img-top" alt="...">
+                       <div class="card-body">
+                         <h5 class="card-title">Online Voting System</h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+               <h1 class="text-danger mt-3 mb-5">
+                  For enjoying all these you have to just login in our site  <i class='far fa-laugh' style='font-size:48px;color:red'></i>
+               </h1>
+</div>
+
+{% endblock %}
