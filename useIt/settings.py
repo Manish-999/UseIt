@@ -141,4 +141,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT=MEDIA_DIR
 
 
-LOGIN_URL='/login'
+LOGIN_URL='/'

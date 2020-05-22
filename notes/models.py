@@ -11,4 +11,4 @@ class WriteNotes(models.Model):
    data=models.TextField(null=True)
 
    def __str__(self):
-      return user.username
+      return self.user.username
