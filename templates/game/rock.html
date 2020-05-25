@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block bodyy%}
+
+<div class="containers">
+
+  <h1 class="hel">Just press a button to play!</h1>
+
+  <div class="button-row">
+    <button class="rock btn">Rock</button>
+    <button class="paper btn">Paper</button>
+    <button class="scissors btn">Scissors</button>
+  </div>
+
+  <div class="game-message-placement">
+    <div id="game-message">
+
+    </div>
+  </div>
+  <!-- end of game-message-placement div -->
+  
+  <div class="scoreboard-placement">
+    <div id="scoreboard">
+      <p class="scoreboard-row" id="playerWins"><strong>Your Victories: </strong><span id="wins">0</span></p>
+      <p class="scoreboard-row" id="playerDraws"><strong>Total Draws:  </strong><span id="draws">0</span></p>
+      <p class="scoreboard-row" id="playerLosses"><strong>Your defeats: </strong><span id="losses">0</span></p>
+    </div>
+  </div><!-- end of scoreboard-placement -->
+  
+  <p id="reset-scores">Reset scores</p>
+  
+</div>
+<!-- end of container div -->
+
+
+
+{% endblock %}

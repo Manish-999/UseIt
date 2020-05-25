@@ -4,6 +4,8 @@ from django.core import validators
 from django import forms
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 # Create your views here.
@@ -51,3 +53,7 @@ def loginn(req):
 def logoutt(req):
    logout(req)
    return render(req,"index.html")
+
+@login_required
+def game(req):
+      return render(req,"game.html")

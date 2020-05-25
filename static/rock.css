@@ -1,0 +1,106 @@
+*{
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .hel{
+  
+      text-align: center;
+      padding: 40px 0px 10px;
+  }
+  
+  .containers{
+  background-color: white;
+  border-radius: 3px;
+  margin: 50px auto;
+  width: 100%;
+  height: 650px;
+  box-shadow: 3px 3px 30px rgba(0,0,0,0.1);
+  }
+  
+  .button-row{
+  text-align: center;
+  margin: 0px auto;
+  }
+  
+  .btn{
+  
+      transition: box-shadow 0.3s;
+      font-size: 24px;
+      padding: 20px 25px;
+      width: 150px;
+      margin: 0px 10px 0px 10px;
+      background-color: white;
+      border: 4px solid grey;
+      border-radius: 3px;
+      box-shadow: 2px 2px 2px 0px rgba(168,168,168,1);
+        
+  
+  }
+  
+  .btn:hover{
+  box-shadow: 4px 4px 6px 0px rgba(168,168,168,1);
+  }
+  
+  
+  
+  .game-message-placement{
+  text-align: center;
+  width: 300px;
+  margin: 50px auto 0px;
+  }
+  
+  #game-message{
+  font-size: 50px;
+  height: 185px;
+  }
+  
+  .game-won{
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  }
+  .game-draw{
+  background-color: lightgrey;
+  color: #545454;
+  border-radius: 10px;
+  }
+  
+  .game-lose{
+  background-color: red;
+  border-radius: 10px;
+  color: white;
+  }
+  
+  .computer-message{
+  font-size: 16px;
+  }
+  
+  .scoreboard-placement{
+  margin: 0px 15px 0px 15px;
+  border-top: 1px solid lightgrey;
+  text-align: center;
+  }
+  
+  .scoreboard-row{
+  font-size: 18px;
+  display: inline-block;
+  }
+  
+  #playerWins{
+  margin-right: 40px;
+  }
+  
+  #playerDraws
+  
+  #playerLosses{
+  margin-left: 40px;
+  }
+  
+  #reset-scores{
+  text-align: center;
+  margin: 0px auto;
+  width: 100px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  }

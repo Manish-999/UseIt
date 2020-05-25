@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block bodyy%}
+{% load static %}
+<div class="container">
+   <h1 class="text-danger">Welcome to our Application. Please select game you want to play..<i class='fas fa-check-double' style='font-size:48px;color:blue'></i></h1>
+   
+   <div class="p-3 mb-2 rounded">
+      <h1>
+         <i class="fas fa-cog fa-spin"></i> Amazing Game... <i class='fas fa-gamepad' style='font-size:48px;color:red'></i>
+      </h1>
+      <br><br>
+      <div class="card-deck row-cols-1 row-cols-md-2 ">
+         <div class="card">
+           <a href="{% url 'game:tick' %}">
+               <img src="{% static 'tick.png' %}" class="card-img-top" alt="...">
+           </a>
+           <div class="card-body">
+             <h5 class="card-title">Tic Tac Toe</h5>
+            </div>
+         </div>
+         <div class="card">
+            <a href="{% url 'game:rockPaper' %}">
+               <img src="{% static 'rock.png' %}" class="card-img-top" alt="...">
+            </a>
+           <div class="card-body">
+             <h5 class="card-title">Rock Paper Scissors</h5>
+            </div>
+         </div>
+         <div class="card">
+            <a href="{% url 'game:findColor' %}">
+                  <img src="{% static 'color.jpg' %}" class="card-img-top h" alt="...">
+            </a>
+            <div class="card-body">
+             <h5 class="card-title">Finding Color</h5>
+           </div>
+         </div>
+       </div>
+</div>
+</div>
+
+{% endblock %}
