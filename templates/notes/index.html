@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block bodyy%}
+<div class="container">
+    <div class="row mt-5">
+        {% for x in data%}
+        <div class="col-md-3 col-sm-12 ml-5 mr-4">
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{x.date}}</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{x.topic}}</h5>
+
+                  <ul class="card-text">
+                      {% for y in x.data %}
+                      <li>{{y}}</li>
+                      {% endfor %}
+                  </ul>
+                </div>
+                <div class="w-auto mr-4">
+                    <form action="/notes/edit" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{x.topic}}" name="topic">
+                        <input type="submit" class="btn btn-primary btn-block" value="Edit notes">
+                    </form>
+                    <form action="/delTopic" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{x.topic}}" name="topic">
+                        <input type="submit" class="btn btn-danger btn-block mt-2 mb-2" value="Delete notes">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor%}
+
+        <div class="col-md-3 col-sm-12 ml-5 mr-4">
+            <div class="card  bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Add New Notes</div>
+                <div class="card-body">
+                  <h5 class="card-title">
+
+                  </h5>
+                  <h1 class="monu text-center">
+                    <i class='far fa-plus-square' style='font-size:48px;color:red'></i></h1>
+                </div>
+                <div class="w-auto mr-4">
+                    <form action="/create" onsubmit="return check()" method="POST">
+                        {% csrf_token %}
+                        <input type="text" id="checks"class="form-control ml-2 mb-2" name="data" placeholder="Enter Topic">
+    
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Notes">
+                    </form>
+                </div>
+                  
+              </div>
+        </div>
+    </div>
+    
+
+</div>
+
+<script>
+    function check(){
+    if (document.getElementById("checks").value.length==0){
+        return false
+    }else{
+        return true
+    }
+}
+</script>
+
+{% endblock %}

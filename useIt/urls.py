@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from notes.views import index,register,loginn,logoutt,game
+from notes.views import index,register,loginn,logoutt,note,edit,delete,update,add,delTopic,create
 from game import url
 
 urlpatterns = [
@@ -24,5 +24,12 @@ urlpatterns = [
     path('login', loginn,name="login"),
     path('registration', register,name="register"),
     path('logout', logoutt,name="logout"),
+    path("notes/",note,name="note"),
+    path("notes/edit",edit,name="edit"),
+    path("delete",delete,name="delete"),
+    path("update",update,name="update"),
+    path("add",add,name="add"),
+    path("delTopic",delTopic,name="delTopic"),
+    path("create",create,name="create"),
     path("game/",include(url),name="game")
 ]

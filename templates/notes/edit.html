@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block bodyy%}
+
+<div class="container mt-4">
+   <h1> Notes:- <span class="text-danger">{{data.topic}}</span></h1>
+    {%with i=0%}
+    {%endwith%}
+   {%for x in data.data%}
+   <div class="input-group mt-4">
+    <input type="text" class="form-control chan" value="{{x}}"aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+    <div class="input-group-append" id="button-addon4">
+        <form action="/update" method="POST" onsubmit="return doIt()">
+            {% csrf_token %}
+            <input type="hidden" name="topic" value={{data.topic}}>
+            <input type="hidden" name="value" value="{{x}}">
+            <input class="chan2" type="hidden" name="Cvalue" value="">
+            <button class="btn btn-outline-secondary" type="submit">Update</button>
+        </form>
+        <form action="/delete" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="topic" value={{data.topic}}>
+            <input type="hidden" name="value" value="{{x}}">
+            <button class="btn btn-outline-danger" type="submit">Delete</button>
+        </form> 
+    </div>
+  </div>
+
+  {%endfor%}
+  <form action="/add" method="POST">
+  <div class="input-group mt-3">
+    <input type="text" class="form-control" name="value" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group-append">
+        
+            {% csrf_token %}
+            <input type="hidden" name="topic" value={{data.topic}}>
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add more</button>
+        
+    </div>
+  </div>
+</form>
+</div>
+<script>
+    function doIt(){
+        for (i=0;i<document.getElementsByClassName('chan').length;i++){
+            document.getElementsByClassName('chan2')[i].value = document.getElementsByClassName('chan')[i].value
+        }
+        return true
+    }
+    
+</script>
+{% endblock %}

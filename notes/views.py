@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.generic import ListView
+from notes.models import WriteNotes
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -54,6 +57,116 @@ def logoutt(req):
    logout(req)
    return render(req,"index.html")
 
+
 @login_required
-def game(req):
-      return render(req,"game.html")
+def note(req):
+   x=WriteNotes.objects.filter(user=req.user)
+   for y in x:
+      y.data=y.data.split('$')   
+   return render(req,"notes/index.html",{'data':x})
+
+@login_required
+def edit(req):
+   if req.method =='POST':
+      data=WriteNotes.objects.filter(user=req.user,topic=req.POST.get('topic'))
+      
+      a = data[0].data.split('$')
+      for y in data:
+         y.data=y.data.split('$')
+      return render(req,'notes/edit.html',{ 'data': data[0] })
+   return render(req,"index.html")
+
+
+
+
+@login_required
+def delete(req):
+   if req.method=="POST":
+      data=WriteNotes.objects.get(user=req.user,topic=req.POST.get('topic'))
+      print(data.data)
+      y=data.data.split('$')
+      print(type(y))
+      i=0
+      for x in y:
+         if x==req.POST.get('value'):
+            break
+         else:
+            i=i+1
+      print(y)
+      y.pop(i)
+      print(y)
+      s=''
+      for x in y:
+         s=s+x
+         s=s+'$'
+      s=s[:-1]
+      print(s)
+      data.data=s
+      print(data.data,"=============")
+      data.save()
+      return HttpResponseRedirect("/notes")
+   return render(req,"index.html")
+
+
+
+
+
+@login_required
+def update(req):
+   if req.method=="POST":
+      data=WriteNotes.objects.get(user=req.user,topic=req.POST.get('topic'))
+      print(data.data)
+      y=data.data.split('$')
+      print(type(y))
+      i=0
+      for x in y:
+         if x==req.POST.get('value'):
+            break
+         else:
+            i=i+1
+      y[i]=req.POST.get('Cvalue')
+      s=''
+      for x in y:
+         s=s+x
+         s=s+'$'
+      s=s[:-1]
+      print(data.data,"////////")
+      data.data=s
+      data.save()
+      return HttpResponseRedirect("/notes")
+   return render(req,"index.html")
+
+
+
+
+@login_required
+def add(req):
+   if req.method=="POST":
+      data=WriteNotes.objects.get(user=req.user,topic=req.POST.get('topic'))
+      data.data=data.data+"$"+req.POST.get('value')
+      data.save()
+      return HttpResponseRedirect("/notes")
+   return render(req,"index.html")
+
+
+
+
+@login_required
+def delTopic(req):
+   if req.method=="POST":
+      WriteNotes.objects.get(user=req.user,topic=req.POST.get('topic')).delete()
+      print("done")
+      return HttpResponseRedirect("/notes")
+   return render(req,"index.html")
+
+
+
+
+@login_required
+def create(req):
+   if req.method=="POST":
+      a=WriteNotes(user=req.user,topic=req.POST.get('data'),data=" ")
+      a.save()
+      return HttpResponseRedirect("/notes")
+   
+   return render(req,"index.html")
