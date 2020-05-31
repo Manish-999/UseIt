@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from notes.views import index,register,loginn,logoutt,note,edit,delete,update,add,delTopic,create
 from game import url
+from vote import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,6 @@ urlpatterns = [
     path("add",add,name="add"),
     path("delTopic",delTopic,name="delTopic"),
     path("create",create,name="create"),
-    path("game/",include(url),name="game")
+    path("game/",include(url),name="game"),
+    path("vote/",include(urls),name="vote"),
 ]
