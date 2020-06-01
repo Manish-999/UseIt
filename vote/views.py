@@ -12,6 +12,10 @@ def start(req):
     if req.method=="POST":
         name=User.objects.get(username=req.POST.get('name'))
         p=votes.objects.get(user=name,topic=req.POST.get('topic'))
+        o=p.applied.split(',')
+        for q in o:
+            if q==req.user.username:
+                return HttpResponseRedirect("/vote")
         if req.POST.get('value')=='1':
             p.option1=p.option1+1
         elif req.POST.get('value')=='2':

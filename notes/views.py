@@ -26,6 +26,7 @@ def register(req):
          user.save()
          login(req,user)
          print("data saved")
+         return HttpResponseRedirect("/game")
    else:
          form=Userform()
       
@@ -44,6 +45,7 @@ def loginn(req):
          if user:
             print(user)
             login(req, user)
+            return HttpResponseRedirect("/game")
          
          else:
             print('some error')
